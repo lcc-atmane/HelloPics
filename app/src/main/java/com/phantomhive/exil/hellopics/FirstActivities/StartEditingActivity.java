@@ -21,9 +21,6 @@
 
 
 package com.phantomhive.exil.hellopics.FirstActivities;
-/*
-Shose Activity.
- */
 import static com.phantomhive.exil.hellopics.EdgetoEdgeFix.EdgeToEdgeFix.EdgeToEdgeFixing;
 
 import androidx.activity.EdgeToEdge;
