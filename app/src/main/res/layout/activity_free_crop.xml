@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/activity_free_cropL"
+    tools:context=".Img_Editor.EditorActivities.ViewsActivities.FreeCropActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/FreeCropImageViewscaler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayoutChekforDoneOrNo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout4"
+        app:layout_constraintVertical_bias="0.0">
+
+        <com.phantomhive.exil.hellopics.Img_Editor.Views.FreeCrop.FreeCropImageView
+            android:id="@+id/FreeCropImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/EditorCr"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </com.phantomhive.exil.hellopics.Img_Editor.Views.FreeCrop.FreeCropImageView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/Eraser_settinglayout"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_marginBottom="1dp"
+            android:background="@color/EditorCrAlpha"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+
+            <SeekBar
+                android:id="@+id/CropOpacity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:max="255"
+                android:progress="255"
+                app:layout_constraintBottom_toTopOf="@+id/FCerase_size_SB"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/CropTextOpacity"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </SeekBar>
+
+            <TextView
+                android:id="@+id/CropTextOpacity"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:text="@string/Opacity"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/textViewFCerase_size_SB"
+                app:layout_constraintEnd_toStartOf="@+id/CropOpacity"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <SeekBar
+                android:id="@+id/FCerase_size_SB"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:max="100"
+                android:progress="50"
+                app:layout_constraintBottom_toTopOf="@+id/CropHardness"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewFCerase_size_SB"
+                app:layout_constraintTop_toBottomOf="@+id/CropOpacity" />
+
+            <TextView
+                android:id="@+id/textViewFCerase_size_SB"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:text="@string/Size"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/CropTextHardness"
+                app:layout_constraintEnd_toStartOf="@+id/FCerase_size_SB"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/CropTextOpacity" />
+
+
+            <TextView
+                android:id="@+id/CropTextHardness"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:text="@string/Hardness"
+                android:gravity="center"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/CropHardness"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewFCerase_size_SB" />
+
+            <SeekBar
+                android:id="@+id/CropHardness"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:progress="5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/CropTextHardness"
+                app:layout_constraintTop_toBottomOf="@+id/FCerase_size_SB" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutChekforDoneOrNo"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/EditorCr"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/FreeCropBack_to_Homefrom"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/EditorCr"
+            android:scaleType="centerInside"
+            android:src="@drawable/close_ic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageButton
+            android:id="@+id/FreeCropDone"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/EditorCr"
+            android:src="@drawable/done_ic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageButton
+            android:id="@+id/EraserimageButton"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="60dp"
+            android:background="@color/Transparent"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/RepairimageButton"
+            app:layout_constraintStart_toEndOf="@+id/FreeCropBack_to_Homefrom"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/brush_ic" />
+
+        <ImageButton
+            android:id="@+id/RepairimageButton"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="60dp"
+            android:background="@color/Transparent"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/FreeCropDone"
+            app:layout_constraintStart_toEndOf="@+id/EraserimageButton"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/eraser_ic"
+            tools:ignore="VectorDrawableCompat" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/EditorCr"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/CropEraseImage"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/EditorCr"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/FreeCropRedoRight"
+            app:layout_constraintStart_toEndOf="@+id/FreeCropRedoLeft"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/cut_ic" />
+
+        <ImageButton
+            android:id="@+id/FreeCropRedoRight"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="75dp"
+            android:backgroundTint="@color/EditorCr"
+            android:scaleType="centerInside"
+            android:visibility="gone"
+            android:src="@drawable/rotate_right_ic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageButton
+            android:id="@+id/FreeCropRedoLeft"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="75dp"
+            android:visibility="gone"
+            android:backgroundTint="@color/EditorCr"
+            android:scaleType="centerInside"
+            android:src="@drawable/rotate_left_ic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/activity_add_photoL"
+    tools:context=".Img_Editor.EditorActivities.ViewsActivities.AddPhotoActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout8"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/AddImagesImageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/DoneAddingImg"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="@color/EditorCr"
+            android:scaleType="centerInside"
+            android:src="@drawable/done_ic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageButton
+            android:id="@+id/CancelAddingImg"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:backgroundTint="@color/EditorCr"
+            android:scaleType="centerInside"
+            android:src="@drawable/close_ic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/AddImagesImageView2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/AddOption"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout8">
+        <com.phantomhive.exil.hellopics.Img_Editor.Views.AddImages.AddImagesImageView
+            android:id="@+id/AddImagesImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.497"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/AddImageFloatingButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:clickable="true"
+        android:backgroundTint="@color/main_project_color_teal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AddImagesImageView2"
+        app:srcCompat="@drawable/plus_add" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/AddOption"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/AddImageFloatingButton"
+        app:layout_constraintTop_toBottomOf="@+id/AddImagesImageView2">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ImageOptionRecycleView"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ViewFlipper
+        android:id="@+id/ImagesToolsFlipper"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/EditorCrAlpha"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/AddOption"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <SeekBar
+                android:id="@+id/ImageOpacity"
+                android:layout_width="0dp"
+                android:layout_height="65dp"
+                android:layout_marginStart="10dp"
+                android:max="255"
+                android:progress="127"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/TextViewOpacityImage"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/TextViewOpacityImage"
+                android:layout_width="50dp"
+                android:layout_height="65dp"
+                android:text="@string/Opacity"
+                android:gravity="center"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/ImageOpacity"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/ImagesMode"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/colorPickeradd"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/Color"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <SeekBar
+                android:id="@+id/ImageRotate"
+                android:layout_width="0dp"
+                android:layout_height="65dp"
+                android:max="360"
+                android:progress="0"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/TextViewRotateImage"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/TextViewRotateImage"
+                android:layout_width="50dp"
+                android:layout_height="65dp"
+                android:text="@string/Rotate"
+                android:textColor="@color/black"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/ImageRotate"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <SeekBar
+                android:id="@+id/ImageScale"
+                android:layout_width="0dp"
+                android:layout_height="65dp"
+                android:layout_marginStart="10dp"
+                android:max="100"
+                android:min="-100"
+                android:progress="1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/TextViewScaleImage"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/TextViewScaleImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/Scale"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/ImageScale"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/RotateAndFlip"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/EditorCrAlpha"
+            app:layout_constraintBottom_toBottomOf="@+id/SelectImageViewscaler"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageButton
+                android:id="@+id/Image_Rotate_left"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:backgroundTint="@color/Transparent"
+                android:scaleType="centerInside"
+                android:src="@drawable/rotate_left_ic"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/Image_filp_Vertical"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:backgroundTint="@color/Transparent"
+                android:scaleType="centerInside"
+                android:src="@drawable/flip_vertical_ic"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/Image_Rotate_Right"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/Transparent"
+                android:scaleType="centerInside"
+                android:src="@drawable/rotate_right_ic"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/viewcenter"
+                app:layout_constraintStart_toEndOf="@+id/Image_Rotate_left"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/Image_filp_Horizontal"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/Transparent"
+                android:scaleType="centerInside"
+                android:src="@drawable/flip_horizontal_ic"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/Image_filp_Vertical"
+                app:layout_constraintStart_toEndOf="@+id/viewcenter"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/viewcenter"
+                android:layout_width="3dp"
+                android:layout_height="55dp"
+                android:background="#B3B19F"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ImageButton
+                android:id="@+id/IBCancelErase"
+                android:layout_width="60dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="20dp"
+                android:background="@color/Transparent"
+                android:scaleType="centerInside"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/IBRestourneErase"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/close_ic" />
+
+            <ImageButton
+                android:id="@+id/IBDoneErase"
+                android:layout_width="60dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="20dp"
+                android:background="@color/Transparent"
+                android:scaleType="centerInside"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/IBRestoreErase"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/done_ic" />
+
+            <ImageButton
+                android:id="@+id/IBRestourneErase"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
+                android:background="@color/Transparent"
+                android:scaleType="centerInside"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/IBRestoreErase"
+                app:layout_constraintStart_toEndOf="@+id/IBCancelErase"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/eraser_ic" />
+
+            <ImageButton
+                android:id="@+id/IBRestoreErase"
+                android:layout_width="60dp"
+                android:layout_height="0dp"
+                android:background="@color/Transparent"
+                android:scaleType="centerInside"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/IBDoneErase"
+                app:layout_constraintStart_toEndOf="@+id/IBRestourneErase"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/brush_ic" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/EditorCrAlpha"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageButton
+                android:id="@+id/SetAdeddimgColor"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="40dp"
+                android:backgroundTint="@color/Transparent"
+                android:scaleType="centerInside"
+                android:src="@drawable/color_ic"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/detectAdeddimgColor"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/detectAdeddimgColor"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="115dp"
+                android:layout_marginEnd="40dp"
+                android:backgroundTint="@color/Transparent"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_location"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/SetAdeddimgColor"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ViewFlipper>
+
+    <ProgressBar
+        android:id="@+id/AddPhotosProgressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        tools:layout_editor_absoluteX="181dp"
+        tools:layout_editor_absoluteY="397dp"
+        app:layout_constraintBottom_toTopOf="@+id/AddOption"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout8"/>
+
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/imageColorFilterMode"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:background="@color/EditorCrAlpha"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toTopOf="@+id/ImagesToolsFlipper"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout8"
+        app:layout_constraintVertical_bias="1.0" />
+    
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/EraseAddedBmSetting"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/EditorCrAlpha"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/ImagesToolsFlipper"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout8"
+        app:layout_constraintVertical_bias="1.0">
+        <SeekBar
+            android:id="@+id/EraseAddedBmOpacity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:max="255"
+            android:progress="255"
+            app:layout_constraintBottom_toTopOf="@+id/EraseAddedBmSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/EraseAddedBmOpacityValue"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/EraseAddedBmOpacityValue"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="center"
+            android:text="@string/Opacity"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/EraseAddedBmSizeValue"
+            app:layout_constraintEnd_toStartOf="@+id/EraseAddedBmOpacity"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <SeekBar
+            android:id="@+id/EraseAddedBmSize"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:progress="30"
+            app:layout_constraintBottom_toTopOf="@+id/EraseAddedBmHardness"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/EraseAddedBmSizeValue"
+            app:layout_constraintTop_toBottomOf="@+id/EraseAddedBmOpacity" />
+
+        <TextView
+            android:id="@+id/EraseAddedBmSizeValue"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="center"
+            android:text="@string/Size"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/EraseAddedBmHardnessValue"
+            app:layout_constraintEnd_toStartOf="@+id/EraseAddedBmSize"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/EraseAddedBmOpacityValue" />
+
+        <SeekBar
+            android:id="@+id/EraseAddedBmHardness"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:max="360"
+            android:progress="45"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/EraseAddedBmHardnessValue"
+            app:layout_constraintTop_toBottomOf="@+id/EraseAddedBmSize" />
+
+        <TextView
+            android:id="@+id/EraseAddedBmHardnessValue"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:text="@string/Hardness"
+            android:gravity="center"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/EraseAddedBmHardness"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/EraseAddedBmSizeValue" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

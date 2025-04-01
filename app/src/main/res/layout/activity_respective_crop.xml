@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/activity_respective_cropL"
+    tools:context=".Img_Editor.EditorActivities.ViewsActivities.RespectiveCropActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/RespectiveCropScaler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.phantomhive.exil.hellopics.Img_Editor.Views.RespectiveCrop.RespectiveCrop
+            android:id="@+id/RespectiveCropImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/EditorCr"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/EditorCr"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/Back_to_HomefromRespectiveCrop"
+            android:layout_width="61dp"
+            android:scaleType="centerInside"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:backgroundTint="@color/EditorCr"
+            android:src="@drawable/close_ic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageButton
+            android:id="@+id/DoneRespectiveCropping"
+            android:layout_width="61dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="20dp"
+            android:scaleType="centerInside"
+            android:backgroundTint="@color/EditorCr"
+            android:src="@drawable/done_ic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

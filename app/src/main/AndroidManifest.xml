@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission-group.READ_MEDIA_VISUAL " />
+    <uses-permission android:name="android.permission-group.STORAGE" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
+    <application
+        android:name=".Img_Editor.EditorActivities.mainActivity.Image"
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/icon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/icon_circle"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.HelloPics"
+        android:windowSoftInputMode="adjustPan">
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-9200222703965948~8253675366"/>
+
+        <activity
+            android:name=".Img_Editor.EditorActivities.HiddenSecrets.HiddenSecretsImagesListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Img_Editor.EditorActivities.HiddenSecrets.HiddenSecretsPasswordEnteringActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Img_Editor.EditorActivities.HiddenSecrets.HiddenSecretsPasswordSettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Img_Editor.EditorActivities.ViewsActivities.EffectsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Img_Editor.EditorActivities.ViewsActivities.GradientActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Img_Editor.EditorActivities.ViewsActivities.DrawingActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Img_Editor.EditorActivities.ViewsActivities.StretchActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Img_Editor.EditorActivities.ViewsActivities.ImageBorderActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Img_Editor.EditorActivities.ViewsActivities.CloneActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Img_Editor.EditorActivities.ViewsActivities.AddPhotoActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Img_Editor.EditorActivities.ViewsActivities.TextOnImageActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Img_Editor.EditorActivities.ViewsActivities.AdjustImageActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Img_Editor.EditorActivities.ViewsActivities.RespectiveCropActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Img_Editor.EditorActivities.ViewsActivities.FreeCropActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Img_Editor.EditorActivities.ViewsActivities.ScaleActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Img_Editor.EditorActivities.ViewsActivities.Select_crop_Activity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Img_Editor.EditorActivities.ViewsActivities.RotateImageActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Img_Editor.EditorActivities.ViewsActivities.CropActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Img_Editor.EditorActivities.mainActivity.Editor_main_Activity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Create_Art_Classes.Fragments_Shoser_F_allimg.All_images_Activity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Create_Art_Classes.ChooseImageArtActivity"
+            android:label="HelloPics - Beta"
+            android:theme="@style/Theme.Art_Screen"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ui_Home.HomeActivity.HomeActivity"
+            android:theme="@style/Theme.HelloPics"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".FirstActivities.StartEditingActivity"
+            android:launchMode="singleInstance"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".FirstActivities.SplashScreenActivity"
+            android:exported="true"
+            android:theme="@style/Theme.SplashScreen"
+            android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

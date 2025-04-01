@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/activity_image_borderL"
+    tools:context=".Img_Editor.EditorActivities.ViewsActivities.ImageBorderActivity">
+
+    <com.phantomhive.exil.hellopics.Img_Editor.Views.imageBorders.ImageBorders
+        android:id="@+id/imageBorders"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout11" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout11"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageBorders"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/doneBordering"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="@color/EditorCr"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/done_ic" />
+
+        <ImageButton
+            android:id="@+id/cancelBordering"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:backgroundTint="@color/EditorCr"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/close_ic" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout12"
+        android:layout_width="0dp"
+        android:layout_height="175dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageBorders">
+
+
+        <SeekBar
+            android:id="@+id/SecondBorder"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="65dp"
+            android:max="360"
+            android:progress="0"
+            app:layout_constraintBottom_toTopOf="@+id/RatiosRecycleView"
+            app:layout_constraintEnd_toStartOf="@+id/BorderMergebtn"
+            app:layout_constraintStart_toEndOf="@+id/BorderRotatebtn"
+            app:layout_constraintTop_toTopOf="@+id/constraintLayout12" />
+
+        <ImageButton
+            android:id="@+id/Border1Color"
+            android:layout_width="60dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/EditorCr"
+            android:scaleType="centerInside"
+            app:layout_constraintStart_toStartOf="@+id/constraintLayout12"
+            app:layout_constraintTop_toTopOf="@+id/constraintLayout12" />
+
+        <ImageButton
+            android:id="@+id/Image_B"
+            android:layout_width="60dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:backgroundTint="@color/EditorCr"
+            android:scaleType="centerInside"
+            android:src="@drawable/add_image_ic"
+            app:layout_constraintEnd_toEndOf="@+id/constraintLayout12"
+            app:layout_constraintTop_toTopOf="@+id/constraintLayout12" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/RatiosRecycleView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/SecondBorder" />
+
+        <TextView
+            android:id="@+id/BorderRotate"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/Rotate"
+            android:gravity="center"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/SecondBorder"
+            app:layout_constraintEnd_toStartOf="@+id/Image_B"
+            app:layout_constraintStart_toEndOf="@+id/Border1Color"
+            app:layout_constraintTop_toTopOf="@+id/constraintLayout12" />
+
+        <ImageButton
+            android:id="@+id/BorderRotatebtn"
+            android:layout_width="50dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/Transparent"
+            android:src="@drawable/edit_ic"
+            app:layout_constraintBottom_toTopOf="@+id/RatiosRecycleView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Border1Color" />
+
+        <ImageButton
+            android:id="@+id/BorderMergebtn"
+            android:layout_width="50dp"
+            android:layout_height="20dp"
+            android:background="@color/Transparent"
+            android:scaleType="centerInside"
+            android:src="@drawable/merge_ic"
+            app:layout_constraintBottom_toTopOf="@+id/RatiosRecycleView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Image_B" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/BorderMode"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/SecondBorder"
+            app:layout_constraintEnd_toStartOf="@+id/Image_B"
+            app:layout_constraintStart_toEndOf="@+id/Border1Color"
+            app:layout_constraintTop_toTopOf="@+id/constraintLayout12" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

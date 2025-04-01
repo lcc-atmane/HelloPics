@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/activity_cloneL"
+    tools:context=".Img_Editor.EditorActivities.ViewsActivities.CloneActivity">
+
+    <com.phantomhive.exil.hellopics.Img_Editor.Views.Clone.CloneImageView
+        android:id="@+id/CloneImageView"
+        android:layout_width="0dp"
+        android:layout_height="00dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout10" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout9"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CloneImageView">
+
+        <ImageButton
+            android:id="@+id/CloneLoc"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:backgroundTint="@color/EditorCr"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/CloneBrush"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_location" />
+
+        <ImageButton
+            android:id="@+id/CloneBrush"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/EditorCr"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/CloneEraser"
+            app:layout_constraintStart_toEndOf="@+id/CloneLoc"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/brush_ic" />
+
+        <ImageButton
+            android:id="@+id/CloneEraser"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/EditorCr"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/CloneMode"
+            app:layout_constraintStart_toEndOf="@+id/CloneBrush"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/eraser_ic" />
+
+        <ImageButton
+            android:id="@+id/CloneMode"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="@color/EditorCr"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/CloneEraser"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/merge_ic" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout10"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+
+        app:layout_constraintBottom_toTopOf="@+id/CloneImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/doneClone"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="@color/EditorCr"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/done_ic" />
+
+        <ImageButton
+            android:id="@+id/cancelClone"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:backgroundTint="@color/EditorCr"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/close_ic" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <ViewFlipper
+        android:id="@+id/CloneToolFlipper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/EditorCrAlpha"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/CloneImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/Transparent"
+            app:layout_constraintBottom_toBottomOf="@+id/CloneImageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+
+            <SeekBar
+                android:id="@+id/CloneOpacity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:max="255"
+                android:progress="255"
+                app:layout_constraintBottom_toTopOf="@+id/CloneSize"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/CloneOpacityValue"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/CloneOpacityValue"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:text="@string/Opacity"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/CloneSizeValue"
+                app:layout_constraintEnd_toStartOf="@+id/CloneOpacity"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <SeekBar
+                android:id="@+id/CloneSize"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:max="100"
+                android:progress="30"
+                app:layout_constraintBottom_toTopOf="@+id/CloneHardness"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/CloneSizeValue"
+                app:layout_constraintTop_toBottomOf="@+id/CloneOpacity" />
+
+            <TextView
+                android:id="@+id/CloneSizeValue"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:text="@string/Size"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/CloneHardnessValue"
+                app:layout_constraintEnd_toStartOf="@+id/CloneSize"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/CloneOpacityValue" />
+
+            <SeekBar
+                android:id="@+id/CloneHardness"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:max="360"
+                android:progress="5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/CloneHardnessValue"
+                app:layout_constraintTop_toBottomOf="@+id/CloneSize" />
+
+            <TextView
+                android:id="@+id/CloneHardnessValue"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:text="@string/Hardness"
+                android:gravity="center"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/CloneHardness"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/CloneSizeValue" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ModeSettingOfCopy"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/Transparent"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/SelectImageViewscaler"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cloneModeList"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.95" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ViewFlipper>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
