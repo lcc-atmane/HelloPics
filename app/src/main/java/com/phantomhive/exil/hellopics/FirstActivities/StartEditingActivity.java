@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 Your Name (or Your Company)
+ * Copyright (C) 2024 HelloPics
  *
  * This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0
  * International License. You may not use this file except in compliance with the License.
