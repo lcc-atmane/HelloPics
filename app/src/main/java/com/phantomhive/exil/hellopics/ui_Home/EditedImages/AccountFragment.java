@@ -18,7 +18,7 @@
  * OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
  * DEALINGS IN THE SOFTWARE.
  */
-package com.phantomhive.exil.hellopics.ui_Home.Account;
+package com.phantomhive.exil.hellopics.ui_Home.EditedImages;
 
 import android.content.Context;
 import android.os.Bundle;

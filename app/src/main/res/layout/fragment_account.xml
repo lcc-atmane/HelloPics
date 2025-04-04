@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/Theme.HelloPics"
-    tools:context=".ui_Home.Account.AccountFragment">
+    tools:context=".ui_Home.EditedImages.AccountFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/Edited_img"

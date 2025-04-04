@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_Account"
-        android:name="com.phantomhive.exil.hellopics.ui_Home.Account.AccountFragment"
+        android:name="com.phantomhive.exil.hellopics.ui_Home.EditedImages.AccountFragment"
         android:label="Account"
         tools:layout="@layout/fragment_account" />
 
