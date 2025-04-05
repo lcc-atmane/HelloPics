@@ -110,7 +110,7 @@ import javax.microedition.khronos.egl.EGLDisplay;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ChooseImageArtActivity extends AppCompatActivity implements Image_Item_ClickListener, itemOnClick {
-       // RecyclerView for the firsts images.
+       // RecyclerView for the firsts images jnnj.
        RecyclerView recyclerView_Gallery_intro;
        // start All_images_Activity.
        TextView see_All;
