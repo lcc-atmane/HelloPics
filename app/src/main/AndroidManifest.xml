@@ -21,10 +21,6 @@
         android:theme="@style/Theme.HelloPics"
         android:windowSoftInputMode="adjustPan">
 
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-9200222703965948~8253675366"/>
-
         <activity
             android:name=".Img_Editor.EditorActivities.HiddenSecrets.HiddenSecretsImagesListActivity"
             android:exported="false" />

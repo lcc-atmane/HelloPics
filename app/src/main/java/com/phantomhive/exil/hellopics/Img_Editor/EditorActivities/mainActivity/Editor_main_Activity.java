@@ -69,13 +69,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.google.android.gms.ads.AdError;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.FullScreenContentCallback;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.interstitial.InterstitialAd;
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.textfield.TextInputEditText;
 import com.phantomhive.exil.hellopics.Img_Editor.EditorActivities.HiddenSecrets.HiddenSecretsSettings.PasswordSettings;
@@ -136,22 +129,11 @@ public class Editor_main_Activity extends AppCompatActivity implements AdapterVi
     String stringformat = ".png";
     int imgQuality = 90;
 
-
-    private InterstitialAd mInterstitialAd;
-    private final String TAG = "MainActivity";
-    private boolean isAdLoading = false; // Prevent multiple loads
-
     protected void onCreate(Bundle savedInstanceState) {
         EdgeToEdge.enable(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor_main);
         EdgeToEdgeFixing(R.id.Editor_main_ActivityL,this);
-
-        // Initialize the Google Mobile Ads SDK on a background thread.
-        MobileAds.initialize(this, initializationStatus -> {
-        });
-        // Load the ad
-        loadAd();
 
         //findViewById.
         mainImgZoomView = findViewById(R.id.editedimage);
@@ -252,63 +234,7 @@ public class Editor_main_Activity extends AppCompatActivity implements AdapterVi
         imageButtonDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (mInterstitialAd != null) {
-                    mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback(){
-                        @Override
-                        public void onAdClicked() {
-                            // Called when a click is recorded for an ad.
-                            Log.d(TAG, "Ad was clicked.");
-                        }
-
-                        @Override
-                        public void onAdDismissedFullScreenContent() {
-                            // Ad was dismissed, now start the editor
-                            ShowSaveImageBar();
-                            Log.d(TAG, "Ad dismissed, starting editor.");
-                            // Load a new ad for the next time
-                            loadAd();
-                        }
-
-                        @Override
-                        public void onAdFailedToShowFullScreenContent(AdError adError) {
-                            mInterstitialAd = null;
-                            Log.d(TAG, "Ad failed to show: " + adError.getMessage());
-                            ShowSaveImageBar();
-                            loadAd();
-                        }
-
-                        @Override
-                        public void onAdImpression() {
-                            // Called when an impression is recorded for an ad.
-                            Log.d(TAG, "Ad recorded an impression.");
-                            // Load a new ad for the next time
-                            loadAd();
-                        }
-
-                        @Override
-                        public void onAdShowedFullScreenContent() {
-                            // Called when ad is shown.
-                            Log.d(TAG, "Ad showed fullscreen content.");
-                            // Load a new ad for the next time
-                            loadAd();
-                        }
-                    });
-
-                    if (mInterstitialAd != null) {
-                        mInterstitialAd.show(Editor_main_Activity.this);
-                        loadAd();
-                    } else {
-                        Log.d("TAG", "The interstitial ad wasn't ready yet.");
-                        loadAd();
-                    }
-
-                } else {
-                    // If no ad is available, start the editor immediately
-                    Log.d(TAG, "The rewarded ad wasn't ready yet.");
-                    ShowSaveImageBar();
-                    loadAd(); // Load a new ad
-                }
+                ShowSaveImageBar();
             }
         });
 
@@ -403,44 +329,10 @@ public class Editor_main_Activity extends AppCompatActivity implements AdapterVi
             ImgName.setText(fileName);
         }
     }
-    private void loadAd() {
-        if (isAdLoading || mInterstitialAd != null) {
-            return; // Prevent multiple simultaneous loads
-        }
-
-        isAdLoading = true;
-
-        AdRequest adRequest = new AdRequest.Builder().build();
-
-
-        InterstitialAd.load(this,"ca-app-pub-9200222703965948/7286644839", adRequest,
-                new InterstitialAdLoadCallback() {
-                    @Override
-                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                        // The mInterstitialAd reference will be null until
-                        // an ad is loaded.
-                        mInterstitialAd = interstitialAd;
-                        isAdLoading = false; // Ad is ready
-                        Log.i(TAG, "onAdLoaded");
-                    }
-
-                    @Override
-                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                        // Handle the error
-                        Log.d(TAG, loadAdError.toString());
-                        mInterstitialAd = null;
-                        isAdLoading = false; // Allow future loads
-                    }
-                });
-    }
 
     @Override
     protected void onResume() {
         super.onResume();
-        // If the ad is null, load a new one
-        if (mInterstitialAd == null) {
-            loadAd();
-        }
     }
 
 

@@ -58,11 +58,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.play.core.appupdate.AppUpdateInfo;
-import com.google.android.play.core.appupdate.AppUpdateManager;
-import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
-import com.google.android.play.core.install.model.AppUpdateType;
-import com.google.android.play.core.install.model.UpdateAvailability;
+
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 import com.phantomhive.exil.hellopics.Create_Art_Classes.ChooseImageArtActivity;
@@ -139,7 +136,6 @@ public class HomeActivity extends AppCompatActivity {
 
 
     private FirebaseRemoteConfig firebaseRemoteConfig;
-    private AppUpdateManager appUpdateManager;
     private static final int UPDATE_REQUEST_CODE = 100;
 
     @Override
@@ -147,6 +143,7 @@ public class HomeActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        FirebaseApp.initializeApp(this);
         EdgeToEdgeFixing(R.id.ActivityHomeL,this);
 
         // Initialize Firebase Remote Config
@@ -168,7 +165,6 @@ public class HomeActivity extends AppCompatActivity {
                 });
 
         // Initialize Play Store In-App Updates
-        appUpdateManager = AppUpdateManagerFactory.create(this);
 
         floating_Button_Gallery = findViewById(R.id.floating_start_Gallery);
 
@@ -242,25 +238,6 @@ public class HomeActivity extends AppCompatActivity {
                 .show();
     }
 
-    // Check for optional updates
-    private void checkForOptionalUpdate() {
-        Task<AppUpdateInfo> appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
-
-        appUpdateInfoTask.addOnSuccessListener(appUpdateInfo -> {
-            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE &&
-                    appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE)) {
-                try {
-                    appUpdateManager.startUpdateFlowForResult(
-                            appUpdateInfo,
-                            AppUpdateType.FLEXIBLE,
-                            this,
-                            UPDATE_REQUEST_CODE);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

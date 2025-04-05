@@ -35,7 +35,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.google.android.gms.ads.MobileAds;
 import com.phantomhive.exil.hellopics.R;
 import com.phantomhive.exil.hellopics.ui_Home.HomeActivity.HomeActivity;
 
@@ -53,12 +52,6 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen_activity);
         EdgeToEdgeFixing(R.id.splash_screen_activityL,this);
-
-        // Initialize the Google Mobile Ads SDK on a background thread.
-        MobileAds.initialize(this, initializationStatus -> {});
-                // save true in the start.
-                msharedPreferences = getSharedPreferences("loginornot",MODE_PRIVATE);
-                firstlog = msharedPreferences.getBoolean("firstlog",true);
 
         new Handler().postDelayed(new Runnable() {
             @Override

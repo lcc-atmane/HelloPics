@@ -68,17 +68,6 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
-import com.google.android.gms.ads.AdError;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.FullScreenContentCallback;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.OnUserEarnedRewardListener;
-import com.google.android.gms.ads.interstitial.InterstitialAd;
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
-import com.google.android.gms.ads.rewarded.RewardItem;
-import com.google.android.gms.ads.rewarded.RewardedAd;
-import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 import com.google.android.material.textfield.TextInputEditText;
 import com.phantomhive.exil.hellopics.Create_Art_Classes.GalleryAdapters.GalleryIntroAdapter;
 import com.phantomhive.exil.hellopics.Create_Art_Classes.Fragments_Shoser_F_allimg.All_images_Activity;
@@ -130,9 +119,7 @@ public class ChooseImageArtActivity extends AppCompatActivity implements Image_I
     ArrayList<AsapRatio_ND> asapRatio_nds;
     AsapRation_Adapter asapRation_adapter;
 
-    private InterstitialAd mInterstitialAd;
-    private final String TAG = "MainActivity";
-    private boolean isAdLoading = false; // Prevent multiple loads
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -140,11 +127,6 @@ public class ChooseImageArtActivity extends AppCompatActivity implements Image_I
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shose__art_);
         EdgeToEdgeFixing(R.id.chooseArtL,this);
-
-                    // Initialize the Google Mobile Ads SDK on a background thread.
-                    MobileAds.initialize(this, initializationStatus -> {});
-        // Load the ad
-        loadAd();
 
 
         image = Image.getInstance();
@@ -326,66 +308,7 @@ public class ChooseImageArtActivity extends AppCompatActivity implements Image_I
     }
     @Override
     public void OnChoosingTheMainPictureClick(String picturePath, Context PackageContext) {
-
-        if (mInterstitialAd != null) {
-        mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback(){
-            @Override
-            public void onAdClicked() {
-                // Called when a click is recorded for an ad.
-                Log.d(TAG, "Ad was clicked.");
-            }
-
-            @Override
-            public void onAdDismissedFullScreenContent() {
-                // Ad was dismissed, now start the editor
-                setMainPictureAndStartEditor(picturePath, PackageContext);
-                Log.d(TAG, "Ad dismissed, starting editor.");
-
-                // Load a new ad for the next time
-                loadAd();
-            }
-
-            @Override
-            public void onAdFailedToShowFullScreenContent(AdError adError) {
-                mInterstitialAd = null;
-                Log.d(TAG, "Ad failed to show: " + adError.getMessage());
-                setMainPictureAndStartEditor(picturePath, PackageContext);
-                loadAd();
-            }
-
-            @Override
-            public void onAdImpression() {
-                // Called when an impression is recorded for an ad.
-                Log.d(TAG, "Ad recorded an impression.");
-                // Load a new ad for the next time
-                loadAd();
-            }
-
-            @Override
-            public void onAdShowedFullScreenContent() {
-                // Called when ad is shown.
-                Log.d(TAG, "Ad showed fullscreen content.");
-                // Load a new ad for the next time
-                loadAd();
-            }
-        });
-
-            if (mInterstitialAd != null) {
-                mInterstitialAd.show(ChooseImageArtActivity.this);
-                loadAd();
-            } else {
-                Log.d("TAG", "The interstitial ad wasn't ready yet.");
-                loadAd();
-            }
-
-        } else {
-            // If no ad is available, start the editor immediately
-            Log.d(TAG, "The rewarded ad wasn't ready yet.");
-            setMainPictureAndStartEditor(picturePath, PackageContext);
-            loadAd(); // Load a new ad
-        }
-
-
+        setMainPictureAndStartEditor(picturePath, PackageContext);
     }
 
     @Override
@@ -393,44 +316,10 @@ public class ChooseImageArtActivity extends AppCompatActivity implements Image_I
 
     }
 
-    private void loadAd() {
-        if (isAdLoading || mInterstitialAd != null) {
-            return; // Prevent multiple simultaneous loads
-        }
-
-        isAdLoading = true;
-
-        AdRequest adRequest = new AdRequest.Builder().build();
-
-
-        InterstitialAd.load(this,"ca-app-pub-9200222703965948/7286644839", adRequest,
-                new InterstitialAdLoadCallback() {
-                    @Override
-                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                        // The mInterstitialAd reference will be null until
-                        // an ad is loaded.
-                        mInterstitialAd = interstitialAd;
-                        isAdLoading = false; // Ad is ready
-                        Log.i(TAG, "onAdLoaded");
-                    }
-
-                    @Override
-                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                        // Handle the error
-                        Log.d(TAG, loadAdError.toString());
-                        mInterstitialAd = null;
-                        isAdLoading = false; // Allow future loads
-                    }
-                });
-    }
 
     @Override
     protected void onResume() {
         super.onResume();
-        // If the ad is null, load a new one
-        if (mInterstitialAd == null) {
-            loadAd();
-        }
     }
 
     public void setMainPictureAndStartEditor(String picturePath, Context PackageContext){
@@ -598,70 +487,7 @@ public class ChooseImageArtActivity extends AppCompatActivity implements Image_I
                     if (h!=0&&w!=0){
                         int pixels = ((w*h)/1000000);
                         if (pixels<10){
-                            if (mInterstitialAd != null) {
-
-                                mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback(){
-                                    @Override
-                                    public void onAdClicked() {
-
-                                        // Called when a click is recorded for an ad.
-                                        Log.d(TAG, "Ad was clicked.");
-                                    }
-
-                                    @Override
-                                    public void onAdDismissedFullScreenContent() {
-
-
-                                        // Ad was dismissed, now start the editor
-                                        createBitmapAndStartEditor(w,h);
-                                        Log.d(TAG, "Ad dismissed, starting editor.");
-
-                                        // Load a new ad for the next time
-                                        loadAd();
-                                    }
-
-                                    @Override
-                                    public void onAdFailedToShowFullScreenContent(AdError adError) {
-                                        mInterstitialAd = null;
-
-                                        Log.d(TAG, "Ad failed to show: " + adError.getMessage());
-                                        createBitmapAndStartEditor(w,h);
-                                        loadAd();
-                                    }
-
-                                    @Override
-                                    public void onAdImpression() {
-
-                                        // Called when an impression is recorded for an ad.
-                                        Log.d(TAG, "Ad recorded an impression.");
-                                        // Load a new ad for the next time
-                                        loadAd();
-                                    }
-
-                                    @Override
-                                    public void onAdShowedFullScreenContent() {
-                                        // Called when ad is shown.
-                                        Log.d(TAG, "Ad showed fullscreen content.");
-                                        // Load a new ad for the next time
-                                        loadAd();
-                                    }
-                                });
-
-                                if (mInterstitialAd != null) {
-                                    mInterstitialAd.show(ChooseImageArtActivity.this);
-                                    loadAd();
-                                } else {
-                                    Log.d("TAG", "The interstitial ad wasn't ready yet.");
-                                    loadAd();
-                                }
-
-                            } else {
-                                // If no ad is available, start the editor immediately
-                                Log.d(TAG, "The rewarded ad wasn't ready yet.");
-                                createBitmapAndStartEditor(w,h);
-                                loadAd(); // Load a new ad
-                            }
-
+                            createBitmapAndStartEditor(w,h);
                         }else {
                             Toast.makeText(ChooseImageArtActivity.this, "The image cannot be larger than 10 megaPixel", Toast.LENGTH_SHORT).show();
                         }
