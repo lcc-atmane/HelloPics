@@ -41,3 +41,6 @@ HelloPics is an advanced photo editing app with over 15 tools, including crop, b
 - **Filters** – Displays saved adjustments as custom filters (this tool is empty until the user saves adjustments).  
 - **Hidden Secrets** – A secure feature that allows users to hide images using a password.
 
+### Download
+
+You can download **HelloPics** from [here](https://lcc-atmane.github.io/HelloPicsSite/).
