@@ -17,6 +17,7 @@ HelloPics is an advanced photo editing app with over 15 tools, including crop, b
   <img src="https://lcc-atmane.github.io/HelloPicsSite/12.jpg" width="150"/>
   <img src="https://lcc-atmane.github.io/HelloPicsSite/13.jpg" width="150"/>
 </p>
+
 ## App Features
 
 **HelloPics** is a powerful photo editing app that gives users full control over their images through a wide range of creative and functional tools.
