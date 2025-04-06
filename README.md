@@ -20,7 +20,7 @@ HelloPics is an easy to use photo editing app with over 15 tools, including crop
 
 ## App Features
 
-**HelloPics** is a powerful photo editing app that gives users full control over their images through a wide range of creative and functional tools.
+**HelloPics** is an easy to use photo editing app that gives users full control over their images through a wide range of creative and functional tools.
 
 ### Available Tools
 
