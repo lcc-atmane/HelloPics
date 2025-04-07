@@ -24,10 +24,14 @@ package com.phantomhive.exil.hellopics.ui_Home.HomeActivity;
 import static com.phantomhive.exil.hellopics.EdgetoEdgeFix.EdgeToEdgeFix.EdgeToEdgeFixing;
 
 import android.Manifest;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -35,7 +39,11 @@ import android.os.Environment;
 import android.provider.Settings;
 import android.text.Html;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResult;
@@ -223,18 +231,65 @@ public class HomeActivity extends AppCompatActivity {
 
     // Show force update dialog
     private void showUpdateDialog() {
-        new AlertDialog.Builder(this)
-                .setTitle("Update Required")
-                .setMessage("A new version is available. Please update to continue.")
-                .setCancelable(false)
-                .setPositiveButton("Update", (dialog, which) -> {
-                    startActivity(new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("https://play.google.com/store/apps/details?id=" + getPackageName())));
-                    finish();
-                })
-                .setNegativeButton("Exit", (dialog, which) -> finish())
-                .show();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Update Required");
+        builder.setMessage("A new version is available. Please update to continue.");
+
+        // Create a LinearLayout to hold the buttons and the clickable TextView
+        LinearLayout layout = new LinearLayout(this);
+        layout.setOrientation(LinearLayout.VERTICAL);
+        layout.setPadding(50, 20, 50, 20);
+
+        // Create the "Visit this link manually" message
+        TextView manualLinkText = new TextView(this);
+        manualLinkText.setText("If the link doesn't open, Copy this link and open it : ");
+        manualLinkText.setTextColor(Color.BLACK);
+        manualLinkText.setTextSize(16);
+        manualLinkText.setGravity(Gravity.CENTER);
+        manualLinkText.setPadding(20, 10, 20, 10);
+
+        // Create the "Copy Link" clickable text
+        TextView copyLinkText = new TextView(this);
+        copyLinkText.setText("Click here to copy the link");
+        copyLinkText.setTextColor(Color.parseColor("#A6A061"));
+        copyLinkText.setTextSize(16);
+        copyLinkText.setGravity(Gravity.CENTER);
+        copyLinkText.setPadding(20, 10, 20, 10);
+        copyLinkText.setClickable(true);
+        copyLinkText.setTypeface(null, Typeface.BOLD);
+        copyLinkText.setOnClickListener(v -> {
+            // Copy the URL to clipboard
+            ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("URL", "https://lcc-atmane.github.io/HelloPicsSite/");
+            clipboard.setPrimaryClip(clip);
+            Toast.makeText(getApplicationContext(), "Link copied to clipboard", Toast.LENGTH_SHORT).show();
+        });
+
+        // Add the TextViews to the layout
+        layout.addView(manualLinkText);
+        layout.addView(copyLinkText);
+
+        // Set the custom layout inside the dialog
+        builder.setView(layout);
+
+        // "Update" Button
+        builder.setPositiveButton("Update", (dialog, which) -> {
+            // Create an intent to open the URL in a browser
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://lcc-atmane.github.io/HelloPicsSite/"));
+            intent.setPackage("com.android.chrome");  // Ensure the intent opens in Chrome
+            startActivity(intent);
+            finish();
+        });
+
+        // "Exit" Button
+        builder.setNegativeButton("Exit", (dialog, which) -> finish());
+
+        // Show the dialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
+
+
 
 
     @Override
