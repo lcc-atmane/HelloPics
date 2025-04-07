@@ -19,9 +19,7 @@
  * DEALINGS IN THE SOFTWARE.
  */
 package com.phantomhive.exil.hellopics.ui_Home.HomeActivity;
-/*
-home Activity.
- */
+
 
 import static com.phantomhive.exil.hellopics.EdgetoEdgeFix.EdgeToEdgeFix.EdgeToEdgeFixing;
 
