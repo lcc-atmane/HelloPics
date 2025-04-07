@@ -652,7 +652,7 @@ public class AddImagesImageView extends View {
     }
     /*
     if (Images.Size() == 0) return;
-            // Create a temporary bitmap and canvas
+            // Create a temporary bitmap and canvas kpok
             Bitmap tempBitmap = Bitmap.createBitmap(canvas.getWidth(), canvas.getHeight(), Bitmap.Config.ARGB_8888);
             Canvas tempCanvas = new Canvas(tempBitmap);
 
