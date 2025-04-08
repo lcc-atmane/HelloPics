@@ -53,6 +53,11 @@ public class SplashScreenActivity extends AppCompatActivity {
         setContentView(R.layout.splash_screen_activity);
         EdgeToEdgeFixing(R.id.splash_screen_activityL,this);
 
+        // save true in the start.
+        msharedPreferences = getSharedPreferences("loginornot",MODE_PRIVATE);
+        firstlog = msharedPreferences.getBoolean("firstlog",true);
+
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
