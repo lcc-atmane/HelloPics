@@ -44,3 +44,19 @@ HelloPics is an easy to use photo editing app with over 15 tools, including crop
 ### Download
 
 You can download **HelloPics** from [here](https://lcc-atmane.github.io/HelloPicsSite/).
+
+## License
+
+This project is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License - see the [CC BY-NC-SA 4.0 License](https://creativecommons.org/licenses/by-nc-sa/4.0/) for details.
+
+### Summary of License
+
+The CC BY-NC-SA 4.0 License is a free, copyleft license suitable for non-commercial use. Here's what it means for using this project:
+
+- **Attribution (BY)**: You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+
+- **NonCommercial (NC)**: You may not use the material for commercial purposes.
+
+- **ShareAlike (SA)**: If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.
+
+This summary is only a brief overview. For the full legal text, please visit the provided link.
