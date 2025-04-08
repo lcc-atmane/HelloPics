@@ -91,7 +91,7 @@ public class StartEditingActivity extends AppCompatActivity {
     public void showDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Beta App Notice");
-        builder.setMessage("This is a beta version of the app. If you encounter any errors, please report them to:\n\nsilvanagraphics.app@gmail.com\n\nYou can also leave a review on the Play Store to share your feedback!");
+        builder.setMessage("This is a beta version of the app. If you encounter any errors, please report them to:\n\nsilvanagraphics.app@gmail.com");
 
 // Create a LinearLayout to hold the buttons
         LinearLayout layout = new LinearLayout(this);
@@ -115,24 +115,8 @@ public class StartEditingActivity extends AppCompatActivity {
             Toast.makeText(this, "Email copied!", Toast.LENGTH_SHORT).show();
         });
 
-// Create the "Leave a Review" clickable text
-        TextView reviewText = new TextView(this);
-        reviewText.setText("Leave a Review");
-        reviewText.setPaintFlags(copyEmailText.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-        reviewText.setTextColor(Color.parseColor("#A6A061"));
-        reviewText.setPadding(20, 10, 20, 10);
-        reviewText.setTextSize(16);
-        reviewText.setGravity(Gravity.CENTER);
-        reviewText.setClickable(true);
-        reviewText.setTypeface(null, Typeface.BOLD);
-        reviewText.setOnClickListener(v -> {
-            startActivity(new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("https://play.google.com/store/apps/details?id=" + getPackageName())));
-        });
-
 // Add the TextViews to the layout
         layout.addView(copyEmailText);
-        layout.addView(reviewText);
 
 // Set the custom layout inside the dialog
         builder.setView(layout);
